@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<style>
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+{% for user in users %}
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div hx-target="this" hx-swap="outerHTML">
+        <div>
+            ID {{user.id}}
+        </div>
+        <div>
+            Username: {{ user.username }}
+        </div>
+        <div>
+            Email: {{ user.email }}
+        </div>
+        <button hx-get="/user/{{ user.id }}" class="btn btn-primary">
+            Click To Edit
+        </button>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+
